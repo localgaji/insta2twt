@@ -3,4 +3,4 @@ __pycache__/
 old/
 logs/
 login.py
-chromedriver.exe
+test.py
