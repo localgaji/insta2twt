@@ -1,11 +1,6 @@
-b.py
-dd.py
-login.py
-posts.txt
-stories.txt
-test.txt
-log.txt
-ids.txt
-twitter_old.py
-twtest.py
 media/
+__pycache__/
+old/
+logs/
+login.py
+chromedriver.exe
