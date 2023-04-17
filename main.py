@@ -13,10 +13,10 @@ def check_start():
             if 'chrome' in pinfo['name'] and '--remote-debugging-port={}'.format(9222) in pinfo['cmdline']:
                 proc.kill()
 
-    # 재실행
+    # 디버거 크롬 재실행
     chrome = subprocess.Popen(
         r'C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 '
-        r'--user-data-dir="C:\chrometemp"')  # 디버거 크롬 구동
+        r'--user-data-dir="C:\chrometemp"')
 
     check = InstaNoLogin()
     start_time, run_time = time.time(), 0
@@ -24,9 +24,8 @@ def check_start():
     while run_time < 43200:
         updates = check.check_post()
 
-        if updates is not None:
-            for post in updates:
-                check.get_post(post)
+        for post in updates:
+            check.get_post(post)
 
         story = check.check_story()
         if story is not None:
