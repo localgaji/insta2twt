@@ -1,5 +1,6 @@
 import psutil
-from get_insta import *
+from story import *
+from posts import *
 
 
 def check_start():
@@ -18,18 +19,18 @@ def check_start():
         r'C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 '
         r'--user-data-dir="C:\chrometemp"')
 
-    check = InstaNoLogin()
+    check = GetDataChrome()
     start_time, run_time = time.time(), 0
 
     while run_time < 43200:
-        updates = check.check_post()
+        updates = check_post()
 
         for post in updates:
-            check.get_post(post)
+            get_post(post)
 
-        story = check.check_story()
+        story = check_story()
         if story is not None:
-            check.get_story(story)
+            get_story(story)
 
         now = time.strftime('%Y-%m-%d %H:%M:%S')
         print(now)

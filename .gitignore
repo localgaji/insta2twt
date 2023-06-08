@@ -2,5 +2,5 @@ media/
 __pycache__/
 old/
 logs/
-login.py
+info.py
 test.py
