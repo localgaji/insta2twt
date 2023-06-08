@@ -2,9 +2,10 @@ import os
 import time
 import requests
 import subprocess
-from login import *
+from info import *
 
 
+# 동영상 인코딩 : 안하면 트위터 업로드 오류남
 def ffmpeg(folder, filename):
     video_file_path = f'./media/{folder}/{filename}'
     encoded_file_path = f'./media/{folder}/f{filename}'
@@ -14,6 +15,7 @@ def ffmpeg(folder, filename):
     return encoded_file_path
 
 
+# 트위터 업로드
 def twitter(folder, link):
     filelist = os.listdir(f'./media/{folder}')
     id_list = []
@@ -54,6 +56,7 @@ def twitter(folder, link):
         alarm("트위터", f'twitter.com/{upload_acc}/status/{response[0]["id"]}', [])
 
 
+# 미디어 저장
 def save(down, strnow):
     if type(down) == list:
         folder_name = f"./media/{strnow}"
@@ -89,6 +92,7 @@ def save(down, strnow):
     time.sleep(3)
 
 
+# line 으로 업데이트 알림
 def alarm(ty: str, post_link: str, media_link: list):
     print(f"{ty}\n{post_link}")
     data_ = {'message': f"{ty}\n\n{post_link}"}
